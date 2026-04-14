@@ -3,25 +3,36 @@ let turn = 2
 
 var board=[["EMPTY","EMPTY","EMPTY"],["EMPTY","EMPTY","EMPTY"],["EMPTY","EMPTY","EMPTY"]]
 
+const turntext =document.getElementById("temp")
+turntext.textContent="O TURN"
 
-console.log("HI")
 
-const greeting =document.getElementById("00")
 
-const changeval00=() => {
+const changeval=(id) => {
+    const greeting =document.getElementById(id)
     let x=turn%2
     console.log(x)
     console.log(turn)
-    if(board[0][0]==="EMPTY" && turn % 2===0){
+    let row= id[0]
+    let col=id[1]
+    
+    if (x===0){
+        turntext.textContent="X TURN"
+    }
+    if (x===1){
+        turntext.textContent="O TURN"
+    }
+
+    if(board[row][col]==="EMPTY" && turn % 2===0){
         greeting.textContent="O HERE"
-        board[0][0]="O HERE"
+        board[row][col]="O HERE"
         console.log("O REPLACE EMPTY")
         turn++
     }
 
-    if(board[0][0]==="EMPTY" && turn %2===1){
+    if(board[row][col]==="EMPTY" && turn %2===1){
         greeting.textContent="X HERE"
-        board[0][0]="X HERE"
+        board[row][col]="X HERE"
         console.log(board)
         console.log("X REPLACE EMPTY")
         turn++
