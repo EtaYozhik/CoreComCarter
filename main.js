@@ -1,6 +1,7 @@
 "use strict";
 let turn = 2
 let win=0
+let draw=0
 var board=[["EMPTY","EMPTY","EMPTY"],["EMPTY","EMPTY","EMPTY"],["EMPTY","EMPTY","EMPTY"]]
 
 const turntext =document.getElementById("temp")
@@ -48,18 +49,14 @@ const changeval=(id) => {
     let row= id[0]
     let col=id[1]
     
-    if (x===0){
-        turntext.textContent="X TURN"
-    }
-    if (x===1){
-        turntext.textContent="O TURN"
-    }
+
 
     if(board[row][col]==="EMPTY" && turn % 2===0){
         greeting.textContent="O HERE"
         board[row][col]="O HERE"
         console.log("O REPLACE EMPTY")
         turn++
+        turntext.textContent="X TURN"
     }
 
     if(board[row][col]==="EMPTY" && turn %2===1){
@@ -68,12 +65,25 @@ const changeval=(id) => {
         console.log(board)
         console.log("X REPLACE EMPTY")
         turn++
+        turntext.textContent="O TURN"
     }
+    
+
     iswin()
     if (win === 1) {
         console.log("SOMEONE WON");
         document.getElementById("winPopup").style.display = "flex";
     }
+    
 
     console.log(win)
+    console.log(turn)
+    if (turn===11){
+        draw=1
+    }
+    if (draw === 1 && win===0) {
+        const wintext =document.getElementById("wintext")
+        wintext.textContent="Nobody won... U guys must be bad at this..."
+        document.getElementById("winPopup").style.display = "flex";
+    }
 }
