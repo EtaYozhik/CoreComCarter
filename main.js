@@ -70,8 +70,10 @@ const changeval=(id) => {
         turn++
     }
     iswin()
-    if(win===1){
-        console.log("SOMEONE WON")
+    if (win === 1) {
+        console.log("SOMEONE WON");
+        document.getElementById("winPopup").style.display = "flex";
     }
+
     console.log(win)
 }

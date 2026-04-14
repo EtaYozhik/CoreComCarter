@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
   <h1><span id="temp">TURN</span></h1>
@@ -25,6 +27,14 @@
       <td><button onclick="changeval('22')"><span id="22">EMPTY</span></td>
     </tr>
   </table>
+
+    <div id="winPopup" class="popup-overlay" onclick="closePopup()">
+      <div class="popup-content">
+        <h1>WE HAVE A WINNER!</h1>
+        <h2>CLICK WILL TO PLAY AGAIN</h2>
+          <img src="WILL.jpg" alt="Winner"onclick="location.reload()">
+      </div>
+    </div>
   <script src="./main.js"></script>
 </body>
 </html>
