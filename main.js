@@ -1,10 +1,42 @@
 "use strict";
 let turn = 2
-
+let win=0
 var board=[["EMPTY","EMPTY","EMPTY"],["EMPTY","EMPTY","EMPTY"],["EMPTY","EMPTY","EMPTY"]]
 
 const turntext =document.getElementById("temp")
 turntext.textContent="O TURN"
+
+function iswin(){
+/*    for (let r=1; r<2; r++){
+        for (let c=1; c<2; c++){
+            if (board[r-1][c-1]===board[r][c] && board[r][c]===board[r+1][c+1] && board[r][c]!="EMPTY"){
+                win=1
+            }
+            if (board[r+1][c+1]===board[r][c] && board[r][c]===board[r-1][c-1] && board[r][c]!="EMPTY"){
+                win=1
+            }
+            if (board[r][c-1]===board[r][c] && board[r][c]===board[r][c+1] && board[r][c]!="EMPTY"){
+                win=1
+            }
+            if (board[r-1][c]===board[r][c] && board[r][c]===board[r+1][c] && board[r][c]!="EMPTY"){
+                win=1
+            }
+        }
+    }
+*/ //Save logic for connect 4
+    for(let c=0;c<=2;c++){
+        if (board[0][c]===board[1][c] && board[1][c]===board[2][c] && board[1][c]!="EMPTY"){
+                    win=1
+        }
+    }
+    for(let r=0;r<=2;r++){
+        if (board[r][0]===board[r][1] && board[r][1]===board[r][2] && board[r][1]!="EMPTY"){
+                    win=1
+        }
+    }
+    if (board[0][0] === board[1][1] && board[1][1] === board[2][2] && board[1][1]!="EMPTY") {win = 1}
+    if (board[0][2] === board[1][1] && board[1][1] === board[2][0] && board[1][1]!="EMPTY") {win = 1}
+}
 
 
 
@@ -37,4 +69,9 @@ const changeval=(id) => {
         console.log("X REPLACE EMPTY")
         turn++
     }
+    iswin()
+    if(win===1){
+        console.log("SOMEONE WON")
+    }
+    console.log(win)
 }
